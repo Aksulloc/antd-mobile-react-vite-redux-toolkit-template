@@ -1,0 +1,19 @@
+.wrap::before {
+    content: '';
+    position: absolute;
+    width: 85vw;
+    height: 85vw;
+    border-radius: 50%;
+    // box-shadow: 4vw 90vw 0 145vw rgba(0, 0, 0, 0.8); /*足够大的投影*/
+    box-shadow: 0 0 0 999vh rgba(0, 0, 0, 0.8); /*足够大的投影*/
+}
+
+.title::before {
+    content: '';
+    text-wrap: wrap;
+    white-space: pre-wrap;
+}
+
+.circle {
+    // --size: 85vw;
+}

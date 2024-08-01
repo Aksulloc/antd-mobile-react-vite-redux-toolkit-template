@@ -1,0 +1,20 @@
+.content {
+    background: #000;
+    .tabs {
+        position: sticky;
+        top: 0;
+        background: #000;
+        z-index: 100;
+        :global {
+            --active-line-color: #f14d68;
+            --active-title-color: #f14d68;
+            --title-font-size: 16px;
+            --active-line-height: 6px;
+            --fixed-active-line-width: 16px;
+            --active-line-border-radius: 50% 50% 0% 0% / 100% 100% 0% 0%;
+        }
+    }
+}
+.swiper-container {
+    width: 100vw;
+}

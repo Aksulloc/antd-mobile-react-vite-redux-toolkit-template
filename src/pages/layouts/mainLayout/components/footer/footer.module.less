@@ -1,0 +1,18 @@
+.tab-bar {
+    margin-top: auto;
+    // 固定位置在flex父容器的底部
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.bottom {
+    background: #000;
+    :global {
+        .adm-tab-bar-item-icon {
+            height: auto;
+        }
+    }
+}
