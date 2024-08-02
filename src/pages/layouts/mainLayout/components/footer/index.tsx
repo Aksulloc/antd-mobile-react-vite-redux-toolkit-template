@@ -21,7 +21,7 @@ const BottomBar: FC = () => {
             //     enableDarkMode ? 'dark' : 'light'
             // );
             if (navigator.vibrate) {
-                navigator.vibrate(100);
+                navigator.vibrate(16);
             }
 
             // setEnableDarkMode(!enableDarkMode);
