@@ -15,7 +15,7 @@ const Community: FC = () => {
     ];
 
     const swiperRef = useRef<SwiperRef>(null);
-    const [activeIndex, setActiveIndex] = useState(1);
+    const [activeIndex, setActiveIndex] = useState(0);
     return (
         <>
             <div className={styles['content']}>

@@ -1,7 +1,7 @@
-import { memo, useEffect, useState, type FC } from 'react';
 import { mainRoutes } from '@/config/routesConfig';
 import { TabBar } from 'antd-mobile';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { memo, useEffect, useState, type FC } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { ReactSVG } from 'react-svg';
 import AddOnePost from '../AddOnePost';

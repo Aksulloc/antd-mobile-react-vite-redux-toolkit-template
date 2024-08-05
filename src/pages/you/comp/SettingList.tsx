@@ -1,13 +1,19 @@
-import { List, NavBar, Popup } from 'antd-mobile';
+import { useColorMode } from '@/context/color-mode';
+import { ActionSheet, List, NavBar, Popup } from 'antd-mobile';
+import type {
+    Action,
+    ActionSheetShowHandler,
+} from 'antd-mobile/es/components/action-sheet';
 import { motion } from 'framer-motion';
+import { Dispatch, SetStateAction, useRef, useState } from 'react';
 import style from './SettingList.module.less';
-import { Dispatch, SetStateAction, useState } from 'react';
 
 interface Props {
     setVisible: Dispatch<SetStateAction<boolean>>;
 }
 
 function SettingList(props: Props) {
+    const { colorMode, setColorMode } = useColorMode();
     const [settingPopupVisible, setSettingPopupVisible] = useState(false);
 
     const variantsContent = {
@@ -33,8 +39,40 @@ function SettingList(props: Props) {
         'Legal',
         'Support',
     ];
+    const handler = useRef<ActionSheetShowHandler>();
 
     const handleClickItem = (item: string) => () => {
+        if ('Dark mode' === item) {
+            const actions: Action[] = [
+                {
+                    text: 'System default',
+                    key: 'System default',
+                },
+                {
+                    text: 'Light',
+                    key: 'Light',
+                    onClick: () => {
+                        console.log(colorMode);
+                        setColorMode('light');
+                        handler.current?.close();
+                    },
+                },
+                {
+                    text: 'Dark',
+                    key: 'Dark',
+                    onClick: () => {
+                        console.log(colorMode);
+                        setColorMode('dark');
+                        handler.current?.close();
+                    },
+                },
+            ];
+            handler.current = ActionSheet.show({
+                actions,
+                cancelText: 'Cancel',
+            });
+            return;
+        }
         setSettingPopupVisible(true);
         console.log(`Clicked ${item}`);
     };
