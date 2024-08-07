@@ -11,13 +11,11 @@ import {
     Popup,
 } from 'antd-mobile';
 import {
-    AppOutline,
     CheckOutline,
     DownOutline,
     FilterOutline,
     HeartOutline,
     HistogramOutline,
-    SetOutline,
     ShopbagOutline,
     StarOutline,
     UndoOutline,
@@ -25,6 +23,7 @@ import {
 } from 'antd-mobile-icons';
 import { motion } from 'framer-motion';
 import SettingList from './comp/SettingList';
+import { ReactSVG } from 'react-svg';
 
 const You: FC = () => {
     const [data, setData] = useState<string[]>(['1', '2']);
@@ -70,9 +69,29 @@ const You: FC = () => {
                 <SettingList setVisible={setSettingPopupVisible} />
             </Popup>
             <div className={style.topbar}>
-                <AppOutline fontSize={24} />
-                <SetOutline
-                    fontSize={24}
+                <ReactSVG
+                    wrapper="svg"
+                    width="20px"
+                    height="20px"
+                    src={'/src/assets/icons/ic_upload.svg'}
+                    style={{
+                        fill: 'black',
+                        stroke: 'White',
+                    }}
+                    onClick={() => {
+                        setSettingPopupVisible(true);
+                    }}
+                />
+                <ReactSVG
+                    wrapper="svg"
+                    width="20px"
+                    height="20px"
+                    src={'/src/assets/icons/ic_settings_profile.svg'}
+                    style={{
+                        marginLeft: '8px',
+                        fill: 'black',
+                        stroke: 'White',
+                    }}
                     onClick={() => {
                         setSettingPopupVisible(true);
                     }}

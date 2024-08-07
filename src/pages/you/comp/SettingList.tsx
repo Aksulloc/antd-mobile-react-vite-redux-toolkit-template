@@ -7,6 +7,7 @@ import type {
 import { motion } from 'framer-motion';
 import { Dispatch, SetStateAction, useRef, useState } from 'react';
 import style from './SettingList.module.less';
+import { ReactSVG } from 'react-svg';
 
 interface Props {
     setVisible: Dispatch<SetStateAction<boolean>>;
@@ -26,18 +27,52 @@ function SettingList(props: Props) {
     };
 
     const content = [
-        'Verify your Fishbrain account',
-        'Edit Profile',
-        'Notification settings',
-        'Feed Preferences',
-        'Message privacy',
-        'Dark mode',
-        'Blocked users',
-        'Mobile data & media',
-        'Units & measurements',
-        'Get Pro',
-        'Legal',
-        'Support',
+        {
+            describedContent: 'Verify your Fishbrain account',
+            icon: '/src/assets/icons/ic_info_exclamation.svg',
+        },
+        {
+            describedContent: 'Edit Profile',
+            icon: '/src/assets/icons/ic_profile.svg',
+        },
+        {
+            describedContent: 'Notification settings',
+            icon: '/src/assets/icons/ic_bell.svg',
+        },
+        {
+            describedContent: 'Feed Preferences',
+            icon: '/src/assets/icons/ic_settings.svg',
+        },
+        {
+            describedContent: 'Message privacy',
+            icon: '/src/assets/icons/ic_map_location.svg',
+        },
+        {
+            describedContent: 'Dark mode',
+            icon: '/src/assets/icons/ic_night.svg',
+        },
+        {
+            describedContent: 'Blocked users',
+            icon: '/src/assets/icons/ic_close_round.svg',
+        },
+        {
+            describedContent: 'Mobile data & media',
+            icon: '/src/assets/icons/ic_autoplay_video.svg',
+        },
+        {
+            describedContent: 'Units & measurements',
+            icon: '/src/assets/icons/ic_ruler.svg',
+        },
+        {
+            describedContent: 'Get Pro',
+            icon: '/src/assets/icons/ic_pro_rounded_star.svg',
+        },
+        { describedContent: 'Legal', icon: '/src/assets/icons/ic_flag.svg' },
+        {
+            describedContent: 'Support',
+            icon: '/src/assets/icons/ic_legal_consent.svg',
+        },
+        { describedContent: 'Log out', icon: '' },
     ];
     const handler = useRef<ActionSheetShowHandler>();
 
@@ -120,8 +155,28 @@ function SettingList(props: Props) {
                     }
                 >
                     {content.map((item) => (
-                        <List.Item key={item} onClick={handleClickItem(item)}>
-                            {item}
+                        <List.Item
+                            key={item.describedContent}
+                            prefix={
+                                item.icon && (
+                                    <ReactSVG
+                                        wrapper="svg"
+                                        width="20px"
+                                        height="20px"
+                                        src={item.icon}
+                                        style={{
+                                            fill: 'black',
+                                            stroke: 'White',
+                                        }}
+                                        onClick={() => {
+                                            setSettingPopupVisible(true);
+                                        }}
+                                    />
+                                )
+                            }
+                            onClick={handleClickItem(item.describedContent)}
+                        >
+                            {item.describedContent}
                         </List.Item>
                     ))}
                 </List>
