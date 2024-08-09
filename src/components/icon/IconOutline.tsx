@@ -1,5 +1,5 @@
 import { useColorModeValue } from '@/context/color-mode';
-import type { FC } from 'react';
+import { useRef, type FC } from 'react';
 import { ReactSVG } from 'react-svg';
 import { Props } from 'react-svg';
 export type IconOutlineProps = Props & {
@@ -20,6 +20,7 @@ export const IconOutline: FC<IconOutlineProps> = ({
     const { wrapper = 'svg', style } = props;
     delete props.style;
     delete props.wrapper;
+    const childRef = useRef(null);
     return (
         <ReactSVG
             wrapper={wrapper}
@@ -29,6 +30,7 @@ export const IconOutline: FC<IconOutlineProps> = ({
                 stroke: strokeColor,
             }}
             {...props}
+            ref={childRef}
         />
     );
 };
