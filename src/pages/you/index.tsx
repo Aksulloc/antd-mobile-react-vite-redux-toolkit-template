@@ -23,7 +23,7 @@ import {
 } from 'antd-mobile-icons';
 import { motion } from 'framer-motion';
 import SettingList from './comp/SettingList';
-import { ReactSVG } from 'react-svg';
+import { IconOutline } from '@/components/icon/IconOutline';
 
 const You: FC = () => {
     const [data, setData] = useState<string[]>(['1', '2']);
@@ -69,28 +69,25 @@ const You: FC = () => {
                 <SettingList setVisible={setSettingPopupVisible} />
             </Popup>
             <div className={style.topbar}>
-                <ReactSVG
-                    wrapper="svg"
-                    width="20px"
-                    height="20px"
+                <IconOutline
                     src={'/src/assets/icons/ic_upload.svg'}
-                    style={{
-                        fill: 'black',
-                        stroke: 'White',
-                    }}
-                    onClick={() => {
-                        setSettingPopupVisible(true);
-                    }}
+                    height={'24px'}
+                    width={'24px'}
+                    fiilLightColor={'White'}
+                    fiilDarkColor={'black'}
+                    strokeLightColor={'black'}
+                    strokeDarkColor={'White'}
                 />
-                <ReactSVG
-                    wrapper="svg"
-                    width="20px"
-                    height="20px"
+                <IconOutline
                     src={'/src/assets/icons/ic_settings_profile.svg'}
+                    height={'24px'}
+                    width={'24px'}
+                    fiilLightColor={'White'}
+                    fiilDarkColor={'black'}
+                    strokeLightColor={'black'}
+                    strokeDarkColor={'White'}
                     style={{
                         marginLeft: '8px',
-                        fill: 'black',
-                        stroke: 'White',
                     }}
                     onClick={() => {
                         setSettingPopupVisible(true);

@@ -7,7 +7,7 @@ import type {
 import { motion } from 'framer-motion';
 import { Dispatch, SetStateAction, useRef, useState } from 'react';
 import style from './SettingList.module.less';
-import { ReactSVG } from 'react-svg';
+import { IconOutline } from '@/components/icon/IconOutline';
 
 interface Props {
     setVisible: Dispatch<SetStateAction<boolean>>;
@@ -128,9 +128,7 @@ function SettingList(props: Props) {
                     height: '90vh',
                     width: '100vw',
                 }}
-            >
-                {/* <SettingList /> */}
-            </Popup>
+            ></Popup>
             <motion.div
                 variants={variantsContent}
                 animate={settingPopupVisible ? 'slideLeftAnimation' : 'anthor'}
@@ -159,19 +157,15 @@ function SettingList(props: Props) {
                             key={item.describedContent}
                             prefix={
                                 item.icon && (
-                                    <ReactSVG
-                                        wrapper="svg"
-                                        width="20px"
-                                        height="20px"
+                                    <IconOutline
                                         src={item.icon}
-                                        style={{
-                                            fill: 'black',
-                                            stroke: 'White',
-                                        }}
-                                        onClick={() => {
-                                            setSettingPopupVisible(true);
-                                        }}
-                                    />
+                                        height={'20px'}
+                                        width={'20px'}
+                                        fiilLightColor={'White'}
+                                        fiilDarkColor={'black'}
+                                        strokeLightColor={'black'}
+                                        strokeDarkColor={'White'}
+                                    ></IconOutline>
                                 )
                             }
                             onClick={handleClickItem(item.describedContent)}

@@ -1,6 +1,5 @@
 import { addActionType } from '@/constants/addActionType';
 import { Mask, Image } from 'antd-mobile';
-import { AddOutline } from 'antd-mobile-icons';
 import { motion } from 'framer-motion';
 import { Dispatch, Fragment, SetStateAction } from 'react';
 import style from './AddOnePost.module.less';
@@ -98,10 +97,31 @@ const AddOnePost = ({ bgfill, centerStroke, visible, setVisible }: Props) => {
                             rotate: 45,
                         }}
                     >
-                        <AddOutline
-                            className={style['clos_icon']}
-                            fill="white"
-                        />
+                        <div
+                            style={{
+                                width: '48px',
+                                height: '48px',
+                            }}
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 48 48"
+                            >
+                                <path
+                                    strokeLinejoin="round"
+                                    strokeWidth="4"
+                                    fill={centerStroke}
+                                    d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20Z"
+                                />
+                                <path
+                                    strokeLinejoin="round"
+                                    strokeLinecap="round"
+                                    strokeWidth="4"
+                                    stroke={bgfill}
+                                    d="M24 16v16M16 24h16"
+                                />
+                            </svg>
+                        </div>
                     </motion.div>
                 </div>
             </Mask>

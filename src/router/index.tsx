@@ -12,7 +12,7 @@ import { IRoute } from '@/types/router';
 const RouterComponent: FC = () => (
     <MemoryRouter>
         <Routes>
-            <Route path="/" element={<Navigate to="/main/community" />} />
+            <Route path="/" element={<Navigate to="/main/you" />} />
             {/* <Route path="/index" element={<Navigate to="/main/community" />} /> */}
             <Route path="/main/*" element={<MainLayout />} />
             <Route path="*" element={<ErrorBlock fullPage />} />

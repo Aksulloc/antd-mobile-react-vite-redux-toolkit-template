@@ -1,11 +1,11 @@
 import { mainRoutes } from '@/config/routesConfig';
 import { TabBar } from 'antd-mobile';
-import { memo, useEffect, useState, type FC } from 'react';
+import { memo, useState, type FC } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-
-import { ReactSVG } from 'react-svg';
 import AddOnePost from '../AddOnePost';
 import style from './footer.module.less';
+import { IconOutline } from '@/components/icon/IconOutline';
+import { useColorModeValue } from '@/context/color-mode';
 
 const BottomBar: FC = () => {
     const [visible, setVisible] = useState(false);
@@ -13,18 +13,14 @@ const BottomBar: FC = () => {
     const history = useNavigate();
     const location = useLocation();
     const { pathname } = location;
-    const [enableDarkMode] = useState(true);
+
+    const sufaceColor = useColorModeValue('White', 'black');
+    const sufaceColorInverse = useColorModeValue('black', 'White');
     const setRouteActive = (value: string) => {
         if (value === 'add') {
-            // document.documentElement.setAttribute(
-            //     'data-prefers-color-scheme',
-            //     enableDarkMode ? 'dark' : 'light'
-            // );
             if (navigator.vibrate) {
                 navigator.vibrate(16);
             }
-
-            // setEnableDarkMode(!enableDarkMode);
             setVisible(!visible);
             return;
         }
@@ -45,8 +41,8 @@ const BottomBar: FC = () => {
         },
         element: (
             <AddOnePost
-                bgfill={'white'}
-                centerStroke={'black'}
+                bgfill={sufaceColorInverse}
+                centerStroke={sufaceColor}
                 visible={visible}
                 setVisible={setVisible}
             />
@@ -57,13 +53,6 @@ const BottomBar: FC = () => {
         addItem,
         ...mainRoutes.slice(middleIndex),
     ];
-
-    useEffect(() => {
-        document.documentElement.setAttribute(
-            'data-prefers-color-scheme',
-            enableDarkMode ? 'dark' : 'light'
-        );
-    }, [enableDarkMode]);
 
     return (
         <>
@@ -76,26 +65,33 @@ const BottomBar: FC = () => {
                 {newArray.map((item) => (
                     <TabBar.Item
                         className={style['bottom']}
+                        style={{ background: sufaceColor }}
                         key={item.pathname}
                         icon={
                             typeof item.icon === 'string' ? (
-                                <ReactSVG
-                                    wrapper="svg"
-                                    width="20px"
-                                    height="20px"
+                                <IconOutline
                                     src={
                                         location.pathname !==
                                         item.meta.fullPathname
                                             ? item.icon
                                             : item.iconSelected
                                     }
-                                    style={{
-                                        fill:
-                                            location.pathname !== item.pathname
-                                                ? 'White'
-                                                : 'black',
-                                        stroke: 'black',
-                                    }}
+                                    height={'24px'}
+                                    width={'24px'}
+                                    fiilLightColor={
+                                        location.pathname !==
+                                        item.meta.fullPathname
+                                            ? 'White'
+                                            : 'black'
+                                    }
+                                    strokeLightColor={'black'}
+                                    fiilDarkColor={
+                                        location.pathname !==
+                                        item.meta.fullPathname
+                                            ? 'black'
+                                            : 'White'
+                                    }
+                                    strokeDarkColor={'White'}
                                 />
                             ) : (
                                 item.element

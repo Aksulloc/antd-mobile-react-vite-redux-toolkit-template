@@ -29,7 +29,6 @@ export const useTheme = () => React.useContext(ThemeContext) ?? defaultContext;
 export function useColorMode() {
     const { resolvedTheme, setTheme } = useTheme();
     const toggleColorMode = () => {
-        console.log(resolvedTheme, 'sssss');
         setTheme(resolvedTheme === 'light' ? 'dark' : 'light');
         document.documentElement.setAttribute(
             'data-prefers-color-scheme',
@@ -38,7 +37,6 @@ export function useColorMode() {
     };
 
     const setColorMode = (colorMode: 'light' | 'dark') => {
-        console.log(resolvedTheme, 'sssss');
         setTheme(colorMode);
         document.documentElement.setAttribute(
             'data-prefers-color-scheme',
